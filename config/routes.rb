@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
-  
   resources :customers
-
   resources :stores
-
   resources :employees
-
   resources :reservations
-
   resources :admins
 
-  get "home/index"
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
-  root :to => "home#index"
+  get "home/index"
+  root to: "home#index"
 end
